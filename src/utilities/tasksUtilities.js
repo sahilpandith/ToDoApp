@@ -1,3 +1,5 @@
+import appState from "../state/appState";
+
 function addDays(days){
     const date = new Date();
     date.setDate(new Date().getDate() + days);
@@ -9,14 +11,15 @@ function tasksFilter(cb, days){
 }
 
 function getTasksFromTodayTo(days){
+    console.log(appState)
     const addedDaysDate = addDays(days);
     return [...this.taskList.tasks.filter(task => task.dueDate > addedDaysDate.getTime()),
-    ...Object.values(this.projects).map(project => project.tasks.filter(task => task.dueDate > addedDaysDate.getTime())).flat(Infinity)]
+    ...Object.values(this.projects).map(project => project.projectTaskList.tasks.filter(task => task.dueDate > addedDaysDate.getTime())).flat(Infinity)]
 }
 
 function getAllTask(){
     return [...this.taskList.tasks,
-        ...Object.values(this.projects).map(project => project.tasks).flat(Infinity)]
+        ...Object.values(this.projects).map(project => project.projectTaskList.tasks).flat(Infinity)]
 }
 
 export {

@@ -1,6 +1,5 @@
 import generateUUId from '../utilities/uniqueIDGenerator.js'
 class Task {
-    type= 'task';
     constructor(title,details, priority,dueDate){
         this.id = generateUUId.uniqueId;
         this.title= title;
@@ -23,6 +22,10 @@ class Task {
     }
     set updatetaskStatus(isCompleted){
         this.isTaskCompleted= isCompleted;
+    }
+
+    get type(){
+        return 'task';
     }
 }
 

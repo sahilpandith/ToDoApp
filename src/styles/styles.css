@@ -1,0 +1,105 @@
+* {
+    margin: 0px;
+}
+#root {
+    height: 100vh;
+}
+.homepage {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 100px 1fr;
+    height: 100%;
+}
+
+header {
+    border: 1px solid black;
+    grid-column: 1/3;
+    display: flex;
+    align-items: center;
+}
+
+.header-icon{
+    margin-left: 16px;
+    height: 100px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.sidebar {
+    border: 1px solid black;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+}
+
+.siderbar-items{
+    flex: 1;
+    padding: 12px;
+    text-align: start;
+    padding-left: 45px;
+}
+
+
+.siderbar-items .active {
+    color: #5c2bbf;
+    font-weight: 600;
+}
+.siderbar-items .active::before {
+    content: "//";
+    margin-right: 5px;
+}
+
+.sidebar-item {
+    font-size: 25px;
+    padding: 12px;
+    font-weight: 500;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+.project-subitem {
+    margin-left: 25px;
+    padding: 10px;
+    font-size: 22px;
+}
+
+.add-icon {
+    margin: 10px;
+    margin-left: 16px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+main {
+    border: 1px solid black;
+    grid-column: 2/3;
+}
+main .task-list {
+    padding: 5px;
+}
+main .task-list-item {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid gainsboro;
+    display: grid;
+    grid-template-columns: 20px 1fr 2fr 1fr 30px 30px;
+    gap: 20px;
+    font-size: 20px;
+}
+.task-list-item span {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.task-checkbox {
+    margin-right: 5px;
+}
+
+.edit-action {
+    height: 20px;
+    width: 20px;
+}
+.delete-action{
+    height: 20px;
+    width: 20px;
+}
