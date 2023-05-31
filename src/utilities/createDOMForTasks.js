@@ -3,8 +3,10 @@ import { CreateImageNode } from './domUtilities';
 import editIcon from '../assests/edit.png';
 import deleteIcon from '../assests/delete.png';
 import appState from '../state/appState';
+import { openTaskEditDialog,closeTaskEditDialog } from '../layouts/dialog/editTaskDialog';
 
-export default function createDOMFormTasks(tasksList){
+export default function createDOMFromTasks(tasksList){
+    const state = appState;
     const node = document.createElement('div');
     node.classList.add('task-list')
     for(let task of tasksList){
@@ -52,10 +54,27 @@ export default function createDOMFormTasks(tasksList){
     }
     
     function deleteTask(event,task){
-        console.log(event,task);
+        const indexFromTasklist = state.taskList.tasks.findIndex(t => t.id === task.id);
+        if(indexFromTasklist>-1){
+            state.taskList.tasks.splice(indexFromTasklist,1);
+        } 
+        for(let [projectName, projectValue] of Object.entries(state.projects)){
+            const index = projectValue.projectTaskList.tasks.findIndex(t => t.id === task.id);
+            if(index>-1){
+                projectValue.projectTaskList.tasks.splice(index,1);
+                break;
+            }
+        }
+
+        const query = `div[data-name='${state.selectedSideBarItem}']`;
+        document.querySelector(query).click();
     }
     function editTask(event,task){
-        console.log(event,task);
+        function cbOnDialogClose(){
+            const query = `div[data-name='${state.selectedSideBarItem}']`;
+            document.querySelector(query).click();
+        }
+        openTaskEditDialog(task,cbOnDialogClose);
     }
     
     return node
@@ -65,11 +84,4 @@ const priorityColor = {
     'high' : 'red 6px solid',
     'medium' : 'orange 6px solid',
     'easy' : 'green 6px solid'
-}
-const componentKeyMapping = {
-    isTaskCompleted : 'checkbox',
-    details: 'text',
-    priority: ' border',
-    dueDate: 'text',
-    Actions: ''
 }

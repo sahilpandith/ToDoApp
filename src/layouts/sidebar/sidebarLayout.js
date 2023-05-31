@@ -7,6 +7,7 @@ import { listTodaysTask } from '../main/subLayouts/todayTasks';
 import { listWeeklyTask } from '../main/subLayouts/weekTasks';
 import { listProjectTasks } from '../main/subLayouts/projectTasks';
 import { listAllNotes } from '../main/subLayouts/notesLayout';
+import { openNewTaskDialog } from '../dialog/newTaskDialog';
 
 const state = appState;
 function createSideBarSection(){
@@ -17,6 +18,9 @@ function createSideBarSection(){
     sidebarNode.append(sidebarContainer);
 
     const img = new CreateImageNode(plusIcon,"add-icon","add icon");
+    img.imageNode.addEventListener('click', function(){
+        openNewTaskDialog();
+    })
     sidebarNode.append(img.imageNode);
     return sidebarNode;
 }
@@ -28,8 +32,8 @@ const triggerLayoutMap= {
     "Notes" :listAllNotes
 }
 function onSideBarItemClick(event){
-    
     event.stopPropagation();
+    state.selectedSideBarItem = this.dataset.name;
     if(this.dataset.name==='Projects'){
         return
     }
@@ -52,6 +56,7 @@ function onSideBarItemClick(event){
 }
 function onProjectItemClick(event){
     event.stopPropagation();
+    state.selectedSideBarItem = this.dataset.name;
     this.parentNode.childNodes.forEach(node => node?.classList?.remove('active'))
     this.parentNode.parentNode.childNodes.forEach(node => node?.classList?.remove('active'));
     this.classList.add('active');

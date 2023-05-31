@@ -24,6 +24,7 @@ const projectsProto = {
 
 class AppState {
     selectedPID;
+    selelectedSBItem='Home';
     constructor(){
         if(_instance){
             throw new Error('Cannot create multiple instances of app state');
@@ -51,6 +52,12 @@ class AppState {
     }
     set selectedProjectID(id){
         this.selectedPID = id;
+    }
+    set selectedSideBarItem(item){
+        this.selelectedSBItem = item;
+    }
+    get selectedSideBarItem(){
+        return this.selelectedSBItem;
     }
 }
 

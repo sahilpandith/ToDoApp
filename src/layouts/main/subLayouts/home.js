@@ -1,10 +1,10 @@
 import appState from "../../../state/appState";
-import createDOMFormTasks from "../../../utilities/createDOMForTasks";
+import createDOMFromTasks from "../../../utilities/createDOMForTasks";
 import { tasksFilter, getAllTask } from "../../../utilities/tasksUtilities";
 
 export function listAllTask(){
      const state = appState;
      const allTasks = tasksFilter(getAllTask.bind({taskList: state.taskList,projects:state.projects}));
-     const homeNode = createDOMFormTasks(allTasks);
+     const homeNode = createDOMFromTasks(allTasks);
      return homeNode;
 }

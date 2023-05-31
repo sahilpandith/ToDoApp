@@ -51,11 +51,16 @@ const note3 =state.notes.addNote('title3', "avsjhgvajsvasj");
 
 state.notes.removeNote(note2);
 
+console.log("#############");
+console.log(state);
+console.log("#############");
+
 ///////////////////////////DOM////////////
 
 const rootNode = document.getElementById('root');
 const homePgaeLayout = createLandingPage();
 rootNode.append(homePgaeLayout);
+
 
 
 

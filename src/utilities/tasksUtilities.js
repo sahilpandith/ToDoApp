@@ -11,7 +11,6 @@ function tasksFilter(cb, days){
 }
 
 function getTasksFromTodayTo(days){
-    console.log(appState)
     const addedDaysDate = addDays(days);
     return [...this.taskList.tasks.filter(task => task.dueDate > addedDaysDate.getTime()),
     ...Object.values(this.projects).map(project => project.projectTaskList.tasks.filter(task => task.dueDate > addedDaysDate.getTime())).flat(Infinity)]
