@@ -19,6 +19,7 @@ function createSideBarSection(){
 
     const img = new CreateImageNode(plusIcon,"add-icon","add icon");
     img.imageNode.addEventListener('click', function(){
+        img.imageNode.classList.add('disable-icon');
         openNewTaskDialog();
     })
     sidebarNode.append(img.imageNode);

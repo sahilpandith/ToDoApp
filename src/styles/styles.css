@@ -204,3 +204,7 @@ main .task-list-item {
   fieldset#task-add-options > div{
     justify-self: self-start;
   }
+
+  .disable-icon {
+      pointer-events: none;
+  }

@@ -9,6 +9,7 @@ function openNewTaskDialog(task,cbOnDialogClose){
 function closeNewTaskDialog(){
     const root =document.querySelector('#root');
     root.removeChild(root.lastChild);
+    document.querySelector('.add-icon').classList.remove('disable-icon');
     const query = `div[data-name='${state.selectedSideBarItem}']`;
     document.querySelector(query).click();
 }
