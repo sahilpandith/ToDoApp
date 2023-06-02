@@ -66,6 +66,11 @@ function createDialog(cbOnDialogClose){
 
 function onSubmit(event){
     event.preventDefault();
+    if(!(document.getElementById("task-title").validity.valid 
+    && document.getElementById("task-details").validity.valid
+    && document.getElementById("task-duedate").validity.valid)){
+        return;
+    }
     const title = document.getElementById("task-title").value;
     const details = document.getElementById("task-details").value;
     let priority;
