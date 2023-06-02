@@ -69,7 +69,7 @@ function onSubmit(event){
     event.preventDefault();
     if(!(document.getElementById("task-title").validity.valid 
     && document.getElementById("task-details").validity.valid
-    && document.getElementById("task-duedate").validity.valid)){
+    && (document.getElementById("task-duedate").validity.valid || document.getElementById('addNote').checked))){
         return;
     }
     const title = document.getElementById("task-title").value;
