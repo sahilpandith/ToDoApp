@@ -56,7 +56,7 @@ function createDialog(cbOnDialogClose){
         </fieldset>
         <Label for="task-duedate">Due Date</Label>
         <input type='date' id='task-duedate' required>
-        <button type='submit'>Add task</button>
+        <button type='submit'>Add</button>
     </form>`
     
     dialog.querySelector("button[type='submit']").addEventListener('click',function(event){
